@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('don_hang', function (Blueprint $table) {
             $table->id('MaDonHang');
             $table->unsignedBigInteger('MaNguoiDung');
-            $table->decimal('TongTien', 10, 2);
+            $table->decimal('TongTien', 13, 2);
             $table->string('TrangThai');
             $table->timestamps();
 

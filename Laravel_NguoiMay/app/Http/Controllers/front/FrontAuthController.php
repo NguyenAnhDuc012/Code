@@ -4,8 +4,8 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TheLoai;
-use App\Models\User;
+use App\Models\ThuongHieu;
+use App\Models\NguoiDung;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,27 +14,27 @@ class FrontAuthController extends Controller
     public function showLogin()
     {
         //header
-        $theloais = TheLoai::all();
+        $thuonghieus = ThuongHieu::all();
 
-
-        return view('front.login', compact('theloais'));
+        return view('front.login', compact('thuonghieus'));
     }
 
     public function login(Request $request)
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|string',
+            'password' => 'required|min:3',
         ]);
 
-        $user = User::where('Email', $request->email)->first();
+        $nguoiDung = NguoiDung::where('Email', $request->email)->first();
 
-        if ($user && Hash::check($request->password, $user->MatKhau)) {
-            Auth::login($user);
-            return redirect()->route('front.home')->with('success', 'Đăng nhập thành công!');
-        } else {
-            return back()->with('error', 'Thông tin đăng nhập không chính xác.');
+        if ($nguoiDung && Hash::check($request->password, $nguoiDung->MatKhau)) {
+            Auth::login($nguoiDung);
+
+            return redirect()->route('front.home')->with('success', 'Đăng nhập thành công');
         }
+
+        return redirect()->back()->with('error', 'Email hoặc mật khẩu không chính xác')->withInput();
     }
 
     public function logout()
@@ -46,9 +46,9 @@ class FrontAuthController extends Controller
     public function showRegister()
     {
         //header
-        $theloais = TheLoai::all();
+        $thuonghieus = ThuongHieu::all();
 
-        return view('front.register', compact('theloais'));
+        return view('front.register', compact('thuonghieus'));
     }
 
     public function register(Request $request)
@@ -77,7 +77,7 @@ class FrontAuthController extends Controller
 
         $validatedData['VaiTro'] = 'Người Dùng';
 
-        User::create([
+        NguoiDung::create([
             'Ten' => $validatedData['name'],
             'Email' => $validatedData['email'],
             'MatKhau' => $validatedData['MatKhau'],

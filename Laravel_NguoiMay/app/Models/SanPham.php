@@ -20,18 +20,13 @@ class SanPham extends Model
         'HinhAnh',
     ];
 
-    public function theLoai()
+    public function thuongHieu()
     {
-        return $this->belongsTo(TheLoai::class, 'MaTheLoai');
+        return $this->belongsTo(ThuongHieu::class, 'MaThuongHieu');
     }
 
-    public function tacGia()
+    public function danhGia()
     {
-        return $this->belongsTo(TacGia::class, 'MaTacGia');
-    }
-
-    public function nhaXuatBan()
-    {
-        return $this->belongsTo(NhaXuatBan::class, 'MaNhaXuatBan');
+        return $this->hasMany(DanhGia::class, 'MaSanPham', 'MaSanPham');
     }
 }

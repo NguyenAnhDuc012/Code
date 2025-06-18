@@ -4,7 +4,7 @@
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
-                    <li class="breadcrumb-item"><a class="white-text" href="{{ route('front.home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a style="color: #DC0D15;" href="{{ route('front.home') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item">Đăng ký</li>
                 </ol>
             </div>

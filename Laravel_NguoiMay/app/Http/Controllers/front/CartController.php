@@ -4,7 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TheLoai;
+use App\Models\ThuongHieu;
 use App\Models\SanPham;
 
 class CartController extends Controller
@@ -12,7 +12,7 @@ class CartController extends Controller
     public function showCart()
     {
         //header
-        $theloais = TheLoai::all();
+        $thuonghieus = ThuongHieu::all();
 
         $cart = session()->get('cart', []);
         $total = 0;
@@ -20,22 +20,22 @@ class CartController extends Controller
         foreach ($cart as $item) {
             $total += $item['price'] * $item['quantity'];
         }
-        return view('front.cart', compact('theloais', 'cart', 'total'));
+        return view('front.cart', compact('thuonghieus', 'cart', 'total'));
     }
 
     public function addToCart($productId)
     {
-        $sach = SanPham::where('MaSanPham', $productId)->first();
+        $sanpham = SanPham::where('MaSanPham', $productId)->first();
 
-        if (!$sach) {
+        if (!$sanpham) {
             return redirect()->route('cart.show')->with('error', 'Sản phẩm không tồn tại');
         }
 
         $product = [
-            'id' => $sach->MaSanPham,
-            'name' => $sach->TenSanPham,
-            'price' => $sach->GiaBan,
-            'image' => 'images/' . $sach->HinhAnh,
+            'id' => $sanpham->MaSanPham,
+            'name' => $sanpham->TenSanPham,
+            'price' => $sanpham->GiaBan,
+            'image' => 'images/' . $sanpham->HinhAnh,
             'quantity' => 1
         ];
 

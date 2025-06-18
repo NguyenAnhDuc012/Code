@@ -4,8 +4,8 @@
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
-                    <li class="breadcrumb-item"><a class="white-text" href="{{ route('front.home') }}">Trang chủ</a></li>
-                    <li class="breadcrumb-item"><a class="white-text" href="{{ route('front.home') }}">Cửa hàng</a></li>
+                    <li class="breadcrumb-item"><a style="color: #DC0D15;" class="white-text" href="{{ route('front.home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a style="color: #DC0D15;" class="white-text" href="{{ route('front.home') }}">Cửa hàng</a></li>
                     <li class="breadcrumb-item">Giỏ hàng</li>
                 </ol>
             </div>
@@ -15,7 +15,7 @@
     <section class="section-9 pt-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="table-responsive">
 
                         @if(session('error'))
@@ -30,13 +30,13 @@
                         @endif
 
                         <table class="table" id="cart">
-                            <thead>
+                            <thead style="background-color: #fff; color: black;">
                                 <tr>
                                     <th>Mã</th>
                                     <th>Hình ảnh</th>
-                                    <th>Tên Sách</th>
-                                    <th>Số lượng</th>
+                                    <th>Tên sản phẩm</th>
                                     <th>Đơn giá</th>
+                                    <th>Số lượng</th>
                                     <th>Thành tiền</th>
                                     <th>Xóa</th>
                                 </tr>
@@ -47,7 +47,7 @@
                                     <td>{{ $item['id'] }}</td>
                                     <td><img src="{{ asset($item['image']) }}" width="100" height="100"></td>
                                     <td>{{ $item['name'] }}</td>
-
+                                    <td style="color: #DC0D15;">{{ number_format($item['price'], 0, ',', '.') }} đ</td>
                                     <td>
                                         <div class="input-group quantity mx-auto" style="width: 100px;">
                                             <div class="input-group-btn">
@@ -69,8 +69,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{{ number_format($item['price'], 0, ',', '.') }} đ</td>
-                                    <td>{{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }} đ</td>
+                                    <td style="color: #DC0D15;">{{ number_format($item['price'] * $item['quantity'], 0, ',', '.') }} đ</td>
                                     <td>
                                         <a href="{{ route('cart.remove', $item['id']) }}" class="btn btn-sm btn-danger">
                                             <i class="fa fa-times"></i>
@@ -82,21 +81,36 @@
                         </table>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card cart-summery">
-                        <div class="sub-title">
-                            <h2 class="bg-white">Tóm tắt giỏ hàng</h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between summery-end">
-                                <div>Tổng Cộng</div>
-                                <div>{{ number_format($total, 0, ',', '.') }} đ</div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+
+                    <div class="card cart-summery shadow-sm border-0 p-3">
+                        <div class="d-flex flex-wrap align-items-center justify-content-between">
+                            <div class="d-flex align-items-center me-4">
+                                <span class="me-2 font-weight-medium">Tạm tính:</span>
+                                <span>{{ number_format($total, 0, ',', '.') }} đ</span>
                             </div>
-                            <div class="pt-5">
-                                <a href="{{ route('front.order.showOrder') }}" class="btn-dark btn btn-block w-100">Mua hàng</a>
+
+                            <div class="d-flex align-items-center me-4">
+                                <span class="me-2 font-weight-medium">Phí vận chuyển:</span>
+                                <span>Miễn phí</span>
+                            </div>
+
+                            <div class="d-flex align-items-center me-4">
+                                <strong class="me-2">Tổng cộng:</strong>
+                                <strong style="color: #DC0D15;">{{ number_format($total, 0, ',', '.') }} đ</strong>
+                            </div>
+
+                            <div>
+                                <a href="{{ route('front.order.showOrder') }}" class="btn btn-dark text-uppercase font-weight-bold px-4 py-2">
+                                    Tiến hành thanh toán
+                                </a>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

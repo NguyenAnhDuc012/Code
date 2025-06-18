@@ -51,13 +51,14 @@
     <div class="bg-light top-header" style="background-color: #000000 !important;">
         <div class="container">
             <div class="row align-items-center py-3 d-none d-lg-flex justify-content-between">
-                <div class="col-lg-4 logo">
+
+                <div class="col-lg-3 logo">
                     <a href="{{ route('front.home') }}" class="text-decoration-none">
                         <img src="{{ asset('images/logo.png') }}" alt="" style="width: 240px" ;>
                     </a>
                 </div>
 
-                <div class="col-lg-4">
+                <div class="col-lg-3">
                     <form action="" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control" name="keyword" placeholder="Tìm kiếm sản phẩm..." aria-label="Search">
@@ -68,16 +69,26 @@
                     </form>
                 </div>
 
+                <div class="col-lg-3 col-3 text-left  d-flex justify-content-end align-items-center">
+                    @if (Auth::check())
+                    <span class="mr-3 text-white">Chào, {{ auth()->user()->Ten }}</span>
+                    <a href="{{ route('front.auth.logout') }}" class="nav-link text-white">Đăng xuất</a>
+                    @else
+                    <a href="{{ route('front.auth.showLogin') }}" class="nav-link text-white">Đăng nhập</a>
+                    @endif
 
-                <div class="col-lg-4 col-4 text-left  d-flex justify-content-end align-items-center">
-                    <a href="" class="ml-3 d-flex pt-2" style="margin-right: 32px;">
+                </div>
+
+                <div class="col-lg-3 col-3 text-left  d-flex justify-content-end align-items-center">
+                    <a href="{{ route('cart.show') }}" class="ml-3 d-flex pt-2" style="margin-right: 32px;">
                         <i class="fas fa-shopping-cart" style="font-size: 32px; color: #fff;"></i>
                     </a>
 
-                    <a href="" class="ml-3 d-flex pt-2">
+                    <a href="{{ route('front.myOrders') }}" class="ml-3 d-flex pt-2">
                         <i class="fas fa-user text-white" style="font-size: 32px;"></i>
                     </a>
                 </div>
+
             </div>
         </div>
     </div>

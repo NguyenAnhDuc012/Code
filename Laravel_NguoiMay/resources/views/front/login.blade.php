@@ -4,7 +4,7 @@
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
-                    <li class="breadcrumb-item"><a class="white-text" href="{{ route('front.home') }}">Trang chủ</a></li>
+                    <li class="breadcrumb-item"><a style="color: #DC0D15;" href="{{ route('front.home') }}">Trang chủ</a></li>
                     <li class="breadcrumb-item">Đăng nhập</li>
                 </ol>
             </div>
@@ -27,7 +27,7 @@
                 @endif
                 <form action="{{ route('front.auth.login') }}" method="POST">
                     @csrf
-                    <h4 class="modal-title">Đăng nhập vào tài khoản cuản bạn</h4>
+                    <h4 class="modal-title">Đăng nhập vào tài khoản của bạn</h4>
                     <div class="form-group">
                         <input value="{{ old('email') }}" name="email" type="text" class="form-control" placeholder="Email">
                         @error('email')

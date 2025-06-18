@@ -4,7 +4,7 @@
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
-                    <li class="breadcrumb-item"><a class="white-text" href="#">Tài khoản</a></li>
+                    <li class="breadcrumb-item"><a style="color: #DC0D15;" href="#">Tài khoản</a></li>
                     <li class="breadcrumb-item">Cài đặt</li>
                 </ol>
             </div>
@@ -45,7 +45,9 @@
                                             <td>{{ number_format($order->TongTien, 0, ',', '.') }} đ</td>
 
                                             <td>
-                                                <a href="{{ route('front.orderDetail', $order->MaDonHang) }}" class="btn btn-warning">Chi tiết</a>
+                                                <a href="{{ route('front.orderDetail', $order->MaDonHang) }}" class="btn btn-warning" title="Xem chi tiết">
+                                                    <i class="fas fa-eye"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         @endforeach

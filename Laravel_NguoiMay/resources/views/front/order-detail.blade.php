@@ -4,7 +4,7 @@
         <div class="container">
             <div class="light-font">
                 <ol class="breadcrumb primary-color mb-0">
-                    <li class="breadcrumb-item"><a class="white-text" href="#">Tài khoản</a></li>
+                    <li class="breadcrumb-item"><a style="color: #DC0D15;" class="white-text" href="#">Tài khoản</a></li>
                     <li class="breadcrumb-item">Cài đặt</li>
                 </ol>
             </div>
@@ -58,7 +58,7 @@
                                             <!-- Heading -->
                                             <h6 class="heading-xxxs text-muted">Tổng tiền:</h6>
                                             <!-- Text -->
-                                            <p class="mb-0 fs-sm fw-bold">
+                                            <p style="color: #DC0D15;" class="mb-0 fs-sm fw-bold">
                                                 {{ number_format($order->TongTien, 0, ',', '.') }} đ
                                             </p>
                                         </div>
@@ -70,7 +70,7 @@
                         <div class="card-footer p-3">
 
                             <!-- Heading -->
-                            <h6 class="mb-7 h5 mt-4">Sách đã đặt ({{ $order->chiTietDonHangs->count() }})</h6>
+                            <h6 class="mb-7 h5 mt-4">Sản phẩm đã đặt ({{ $order->chiTietDonHangs->count() }})</h6>
 
                             <!-- Divider -->
                             <hr class="my-3">
@@ -88,7 +88,7 @@
                                             <!-- Title -->
                                             <p class="mb-4 fs-sm fw-bold">
                                                 <a class="text-body" href="#">{{ $orderDetail->sanPham->TenSanPham }} x {{ $orderDetail->SoLuong }}</a> <br>
-                                                <span class="text-muted">{{ number_format($orderDetail->sanPham->GiaBan, 0, ',', '.') }} đ</span>
+                                                <span style="color: #DC0D15;">{{ number_format($orderDetail->sanPham->GiaBan, 0, ',', '.') }} đ</span>
                                             </p>
                                         </div>
                                     </div>
@@ -108,7 +108,7 @@
 
                                 <li class="list-group-item d-flex fs-lg fw-bold">
                                     <span>Tổng</span>
-                                    <span class="ms-auto">{{ number_format($order->TongTien, 0, ',', '.') }} đ</span>
+                                    <span style="color: #DC0D15;" class="ms-auto">{{ number_format($order->TongTien, 0, ',', '.') }} đ</span>
                                 </li>
                             </ul>
                         </div>

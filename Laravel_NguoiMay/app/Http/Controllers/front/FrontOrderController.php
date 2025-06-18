@@ -4,7 +4,7 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TheLoai;
+use App\Models\ThuongHieu;
 use App\Models\DonHang;
 use App\Models\ChiTietDonHang;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +15,7 @@ class FrontOrderController extends Controller
     public function showOrder()
     {
         //header
-        $theloais = TheLoai::all();
+        $thuonghieus = ThuongHieu::all();
 
         $user = Auth::user();
         $cart = Session::get('cart', []);
@@ -24,7 +24,7 @@ class FrontOrderController extends Controller
             $total += $item['price'] * $item['quantity'];
         }
 
-        return view('front.order', compact('theloais', 'user', 'cart', 'total'));
+        return view('front.order', compact('thuonghieus', 'user', 'cart', 'total'));
     }
 
     public function placeOrder(Request $request)
@@ -59,21 +59,21 @@ class FrontOrderController extends Controller
     public function myOrders()
     {
         //header
-        $theloais = TheLoai::all();
+        $thuonghieus = ThuongHieu::all();
 
         $orders = DonHang::where('MaNguoiDung', Auth::user()->MaNguoiDung)->get();
-        return view('front.my-orders', compact('theloais', 'orders'));
+        return view('front.my-orders', compact('thuonghieus', 'orders'));
     }
 
     public function orderDetail($orderId)
     {
         //header
-        $theloais = TheLoai::all();
+        $thuonghieus = ThuongHieu::all();
 
         $order = DonHang::with(['nguoiDung', 'chiTietDonHangs.sanPham'])
             ->where('MaDonHang', $orderId)
             ->first();
 
-        return view('front.order-detail', compact('theloais', 'order'));
+        return view('front.order-detail', compact('thuonghieus', 'order'));
     }
 }
