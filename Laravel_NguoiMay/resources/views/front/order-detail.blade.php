@@ -70,14 +70,14 @@
                         <div class="card-footer p-3">
 
                             <!-- Heading -->
-                            <h6 class="mb-7 h5 mt-4">Sản phẩm đã đặt ({{ $order->chiTietDonHangs->count() }})</h6>
+                            <h6 class="mb-7 h5 mt-4">Sản phẩm đã đặt ({{ $order->chiTietDonHang->count() }})</h6>
 
                             <!-- Divider -->
                             <hr class="my-3">
 
                             <!-- List group -->
                             <ul>
-                                @foreach($order->chiTietDonHangs as $orderDetail)
+                                @foreach($order->chiTietDonHang as $orderDetail)
                                 <li class="list-group-item">
                                     <div class="row align-items-center">
                                         <div class="col-4 col-md-3 col-xl-2">

@@ -40,7 +40,10 @@
                                             <td>{{ $order->MaDonHang }}</td>
                                             <td>{{ $order->created_at->format('d/m/Y') }}</td>
                                             <td>
-                                                <span class="badge bg-success">{{ $order->TrangThai }}</span>
+                                                <span class="badge {{ $order->TrangThai == 'Đã giao' ? 'bg-success' : ($order->TrangThai == 'Đã hủy' ? 'bg-danger' : 'bg-warning') }}">
+                                                    {{ $order->TrangThai }}
+                                                </span>
+
                                             </td>
                                             <td>{{ number_format($order->TongTien, 0, ',', '.') }} đ</td>
 

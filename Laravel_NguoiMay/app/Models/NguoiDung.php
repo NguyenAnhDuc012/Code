@@ -34,4 +34,9 @@ class NguoiDung extends Authenticatable
     {
         return $this->MatKhau;
     }
+
+    public function donHangs()
+    {
+        return $this->hasMany(DonHang::class, 'MaNguoiDung');
+    }
 }

@@ -8,6 +8,9 @@ use App\Http\Controllers\front\FrontOrderController;
 use App\Http\Controllers\front\CartController;
 use App\Http\Middleware\FrontMiddleware;
 
+use App\Http\Controllers\admin\SanPhamController;
+use App\Http\Controllers\admin\TrangChuController;
+use App\Http\Controllers\admin\DonHangController;
 // Front
 Route::get('/', [FrontController::class, 'home'])->name('front.home');
 
@@ -38,3 +41,19 @@ Route::middleware([FrontMiddleware::class])->group(function () {
     Route::get('/order-detail/{order}', [FrontOrderController::class, 'orderDetail'])->name('front.orderDetail');
 
 });
+
+//Admin: Sachs
+Route::get('/admin/sanphams/index', [SanPhamController::class, 'index'])->name('admin.sanphams.index');
+Route::get('/admin/sanphams/create', [SanPhamController::class, 'create'])->name('admin.sanphams.create');
+Route::post('/admin/sanphams/store', [SanPhamController::class, 'store'])->name('admin.sanphams.store');
+Route::get('/admin/sanphams/{id}/edit', [SanPhamController::class, 'edit'])->name('admin.sanphams.edit');
+Route::put('/admin/sanphams/{id}', [SanPhamController::class, 'update'])->name('admin.sanphams.update');
+Route::delete('/admin/sanphams/{id}', [SanPhamController::class, 'destroy'])->name('admin.sanphams.destroy');
+
+//Admin: trang chủ
+Route::get('/admin', [TrangChuController::class, 'trangChu'])->name('admin');
+
+//Admin: Quản lý đơn hàng
+Route::get('/admin/donhangs/index', [DonHangController::class, 'index'])->name('admin.donhangs.index');
+Route::get('/admin/donhangs/show/{MaDonHang}', [DonHangController::class, 'show'])->name('admin.donhangs.show');
+Route::post('/admin/donhangs/update-status/{MaDonHang}', [DonHangController::class, 'updateStatus'])->name('admin.donhangs.updateStatus');

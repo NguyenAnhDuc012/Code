@@ -40,7 +40,7 @@ class FrontOrderController extends Controller
         $order = DonHang::create([
             'MaNguoiDung' => $user->MaNguoiDung,
             'TongTien' => $total,
-            'TrangThai' => 'Chờ xử lý',
+            'TrangThai' => 'Chờ xác nhận',
         ]);
 
         foreach ($cart as $item) {
@@ -70,7 +70,7 @@ class FrontOrderController extends Controller
         //header
         $thuonghieus = ThuongHieu::all();
 
-        $order = DonHang::with(['nguoiDung', 'chiTietDonHangs.sanPham'])
+        $order = DonHang::with(['nguoiDung', 'chiTietDonHang.sanPham'])
             ->where('MaDonHang', $orderId)
             ->first();
 

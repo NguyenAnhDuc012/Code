@@ -9,14 +9,11 @@ class SanPham extends Model
     protected $table = 'san_pham';
     protected $primaryKey = 'MaSanPham';
     protected $fillable = [
-        'MaTheLoai',
-        'MaTacGia',
-        'MaNhaXuatBan',
+        'MaThuongHieu',
         'TenSanPham',
         'GiaBan',
         'TonKho',
         'MoTa',
-        'NgayXuatBan',
         'HinhAnh',
     ];
 

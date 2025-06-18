@@ -20,7 +20,7 @@ class DonHang extends Model
         return $this->belongsTo(NguoiDung::class, 'MaNguoiDung');
     }
 
-    public function chiTietDonHangs()
+    public function chiTietDonHang()
     {
         return $this->hasMany(ChiTietDonHang::class, 'MaDonHang');
     }
